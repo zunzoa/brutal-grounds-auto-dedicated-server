@@ -334,7 +334,7 @@ When you start the dedicated server it will be running inside the SSH terminal a
 tmux
 ```
 
-And then run the `~/start-bg.sh` inside of the newly opened terminal. To exit `tmux` terminal press `CTRL-a` and then `d` to detach the session. You can then safely close the SSH connection, your Brutal Grounds server will continue running. For how to use `tmux` refer to online tutorials, keep in mind that by default the main control key is already re-mapped from CTRL-b to CTRL-a. Check the `tmux.conf` file for more details and edit as needed.
+And then run the `~/start-bg.sh` inside of the newly opened terminal. To exit `tmux` terminal press `CTRL-a` and then `d` to detach the session. You can then safely close the SSH connection, your Brutal Grounds server will continue running. For how to use `tmux` refer to online tutorials, keep in mind that by default the main control key is already re-mapped from `CTRL-b` to `CTRL-a`. Check the `tmux.conf` file for more details and edit as needed.
 
 ## The future?
 
