@@ -1,0 +1,53 @@
+---
+- name: Provision Brutal Grounds Dedicated Server
+  hosts: brutal_grounds_distributed_server
+  tasks:
+    - name: Utility - Upload tmux config file
+      copy:
+        src: ../utility/tmux.conf
+        dest: /home/ubuntu/.tmux.conf
+        owner: ubuntu
+        group: ubuntu
+        mode: "0644"
+    - name: Install Steam - Creating directory
+      become: yes
+      file:
+        path: /opt/steam
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+        mode: "0755"
+    - name: Install Steam - Downloading Steam
+      get_url:
+        url: https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+        dest: /opt/steam/steam.tar.gz
+    - name: Install Steam - extracting
+      unarchive:
+        remote_src: yes
+        src: /opt/steam/steam.tar.gz
+        dest: /opt/steam/
+    - name: Update Steam
+      command:
+        cmd: "/opt/steam/steamcmd.sh +quit"
+    - name: Install Brutal Grounds - Creating directory
+      become: yes
+      file:
+        path: /opt/brutal_grounds_ds
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+        mode: "0755"
+    - name: Install Brutal Grounds - Upload install script helper
+      copy:
+        src: ../utility/bg-ds-install.sh
+        dest: /home/ubuntu/bg-ds-install.sh
+        owner: ubuntu
+        group: ubuntu
+        mode: "0755"
+    - name: Install Brutal Grounds - Upload run script helper
+      copy:
+        src: ../utility/start-bg.sh
+        dest: /home/ubuntu/start-bg.sh
+        owner: ubuntu
+        group: ubuntu
+        mode: "0755"

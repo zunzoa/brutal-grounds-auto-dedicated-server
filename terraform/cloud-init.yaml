@@ -1,0 +1,11 @@
+#cloud-config
+runcmd:
+  - "DEBIAN_FRONTEND=noninteractive"
+  - "apt --yes update"
+  - "apt --yes upgrade"
+  - "add-apt-repository --yes multiverse"
+  - "apt --yes install software-properties-common"
+  - "dpkg --add-architecture i386"
+  - "apt --yes update"
+  - "apt --yes install lib32gcc-s1"
+  - "apt --yes install tmux"
